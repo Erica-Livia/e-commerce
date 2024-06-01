@@ -27,7 +27,7 @@ function HomePage () {
                     </div>
                 </div>
 
-                <div className="px-28 py-20">
+                <div className="px-28">
                     <div className="bg-white mx-auto flex justify-around items-center py-20 w-full px-0 gap-x-5">
                         <div className="bg-darkWhite w-1/3 h-50 p-5">
                             <img src={headphones} className="w-20 h-50 pb-5"/>
