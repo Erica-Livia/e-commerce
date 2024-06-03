@@ -17,48 +17,45 @@ function Navbar() {
 
     return (
         <Router>
-        <nav className="text-white pt-3 pb-3 font-manrope bg-lightBlack">
-            <div className="container mx-auto flex justify-between items-center px-28">
-                <div className="text-2xl font-bold"> <Link to ='/'>audiophile</Link></div>
-                <div className={`hidden md:flex space-x-4 text-sm ${isOpen ? 'hidden' : 'block'}`}>
-                    <a className="text-white hover:text-lightCta"><NavLink to="/">HOME</NavLink></a>
-                    <a  className="text-white hover:text-lightCta"><NavLink to="/headphones">HEADPHONES</NavLink></a>
-                    <a className="text-white hover:text-lightCta"><NavLink to="/speakers">SPEAKERS</NavLink></a>
-                    <a className="text-white hover:text-lightCta"><NavLink to="/earphones">EARPHONES</NavLink></a>
-                </div>
-                <div className={`hidden md:flex text-sm ${isOpen ? 'hidden' : 'block'}`}>
-                    <a href="/" className="text-xl hover:text-lightCta"><IoCartOutline /></a>
-                </div>
-
+        <nav className="text-white pt-3 pb-3 px-8 font-manrope bg-lightBlack w-full md:px-20 sm:px-8">
+            <div className="container mx-auto flex justify-between items-center">
                 <button
-                className="md:hidden text-white"
-                onClick={toggleMenu}
+                    className="md:hidden text-white left-0"
+                    onClick={toggleMenu}
                 >
                     <svg
                         className="w-6 h-6"
                         stroke="white"
                     >
                         <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={25}
-                        d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={25}
+                            d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
                         />
                     </svg>
 
                 </button>
+                <div className="text-2xl font-bold md:text-center"><Link to='/'>audiophile</Link></div>
+                <div className={`hidden md:flex space-x-4 text-sm ${isOpen ? 'hidden' : 'block'}`}>
+                    <NavLink to="/" className={({ isActive }) => isActive ? "text-lightCta" : "text-white hover:text-lightCta"}>HOME</NavLink>
+                    <NavLink to="/headphones" className={({ isActive }) => isActive ? "text-lightCta" : "text-white hover:text-lightCta"}>HEADPHONES</NavLink>
+                    <NavLink to="/speakers" className={({ isActive }) => isActive ? "text-lightCta" : "text-white hover:text-lightCta"}>SPEAKERS</NavLink>
+                    <NavLink to="/earphones" className={({ isActive }) => isActive ? "text-lightCta" : "text-white hover:text-lightCta"}>EARPHONES</NavLink>
+                </div>
+                <div className={` md:flex text-sm ${isOpen ? 'hidden' : 'block'}`}>
+                    <a href="/" className="text-xl hover:text-lightCta"><IoCartOutline/></a>
+                </div>
+
+
             </div>
             {isOpen && (
                 <div className="md:hidden block justify-around text-center">
-
-                    <a className="block px-2 py-1 text-white hover:text-lightCta"><NavLink to="/">HOME</NavLink></a>
-                    <a className="block px-2 py-1 text-white hover:text-lightCta"><NavLink
-                        to="/headphones">HEADPHONES</NavLink></a>
-                    <a className="block px-2 py-1 text-white hover:text-lightCta"><NavLink
-                        to="/speakers">SPEAKERS</NavLink></a>
-                    <a className="block px-2 py-1 text-white hover:text-lightCta"><NavLink
-                        to="/earphones">EARPHONES</NavLink></a>
-                    <a className="block px-2 py-1 text-center text-white hover:text-lightCta"><NavLink to="/cart"> CART</NavLink></a>
+                    <NavLink to="/" className={({ isActive }) => isActive ? "block px-2 py-1 text-lightCta" : "block px-2 py-1 text-white hover:text-lightCta"}>HOME</NavLink>
+                    <NavLink to="/headphones" className={({ isActive }) => isActive ? "block px-2 py-1 text-lightCta" : "block px-2 py-1 text-white hover:text-lightCta"}>HEADPHONES</NavLink>
+                    <NavLink to="/speakers" className={({ isActive }) => isActive ? "block px-2 py-1 text-lightCta" : "block px-2 py-1 text-white hover:text-lightCta"}>SPEAKERS</NavLink>
+                    <NavLink to="/earphones" className={({ isActive }) => isActive ? "block px-2 py-1 text-lightCta" : "block px-2 py-1 text-white hover:text-lightCta"}>EARPHONES</NavLink>
+                    <NavLink to="/cart" className={({ isActive }) => isActive ? "block px-2 py-1 text-lightCta" : "block px-2 py-1 text-white hover:text-lightCta"}>CART</NavLink>
                 </div>
             )}
         </nav>

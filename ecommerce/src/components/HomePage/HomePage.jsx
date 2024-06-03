@@ -23,7 +23,7 @@ function HomePage () {
                         </button>
                     </div>
                     <div className="">
-                        <img src={headphone} alt="headphones" className="w-4/5"/>
+                        <img src={headphone} alt="headphones" className="w-4/5 sm-bg-[(headphone)]"/>
                     </div>
                 </div>
 
