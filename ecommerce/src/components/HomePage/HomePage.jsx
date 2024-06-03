@@ -11,6 +11,8 @@ function HomePage () {
     return (
         <div className="bg-white">
             <div className="pb-8 items-center">
+
+                {/* HomePage HeroSection */}
                 <div className="bg-lightBlack mx-auto flex justify-between items-center px-28 py-8">
                     <div className="text-footerText">
                         <h1>NEW PRODUCT</h1>
@@ -27,6 +29,7 @@ function HomePage () {
                     </div>
                 </div>
 
+                {/* Links to Products Page */}
                 <div className="px-28">
                     <div className="bg-white mx-auto flex justify-around items-center py-20 w-full px-0 gap-x-5">
                         <div className="bg-darkWhite w-1/3 h-50 p-5">
@@ -68,7 +71,7 @@ function HomePage () {
                     </div>
                 </div>
 
-
+                {/* ZX9 SpeakerSection */}
                 <div className="px-28 py-10">
                     <div className="bg-cta mx-auto flex justify-around items-center pt-20 rounded-md">
                         <img src={speakers} className="w-1/5"/>
@@ -85,6 +88,7 @@ function HomePage () {
                     </div>
                 </div>
 
+                {/* ZX7 SpeakerSection */}
                 <div className="px-28">
                     <div className={`mx-auto flex justify-around items-center py-20 right rounded-md`} style={{backgroundImage: `url(${speaker})`}}>
                         <div className="text-footerText w-1/5 left-0">
@@ -99,6 +103,11 @@ function HomePage () {
                         </div>
                     </div>
                 </div>
+
+            {/* YX1 EarphoneSection   */}
+
+            {/*  DescriptionSection with ManPictures   */}
+
             </div>
         </div>
     )
