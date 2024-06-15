@@ -1,0 +1,40 @@
+.navLinks, .tracking-widest {
+    letter-spacing: 3px !important;
+}
+
+.newProduct {
+    letter-spacing: 10px !important;
+}
+
+.border-b-gray-500 {
+    border-bottom: solid 0.5px rgba(107, 114, 128) !important;
+}
+
+/* Home Page */
+
+/* Hero Section */
+
+#heroSection {
+    height: 85vh;
+}
+
+@media (max-width : 768px) {
+    #heroSection {
+        background-image: url("assets/headphones/headphonesHero2.png") !important;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 85vh;
+    }
+}
+
+
+/* Card Style */
+
+/* Image shadow */
+
+.imageShadow {
+    filter: drop-shadow(0px 10px 5px slategrey);
+}
+
+
+/* Group Card */

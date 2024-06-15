@@ -15,6 +15,7 @@ export default {
         lightCta: '#fbaf85',
         backgroundColor: '#fafafa',
         footerText: '#979797',
+        darkBgColor: '#121212',
       },
       fontFamily: {
         manrope: ['Manrope', 'sans-serif'],
