@@ -7,8 +7,8 @@ import Card from "./Card.jsx";
 function GroupCard() {
     return (
         <>
-            <div className="px-4 md:px-16 py-24">
-                <div className="bg-white mx-auto flex flex-col sm:flex-row justify-around items-center py-20 w-full gap-y-8 gap-x-5 md:flex-row-reverse">
+            <div className="px-4 lg:px-24 md:px-16 sm:px-2 py-24">
+                <div className="bg-white mx-auto flex flex-col sm:flex-row justify-around items-center py-20 w-full gap-y-16 gap-x-5 md:flex-row">
                     <Card
                         image={headphones}
                         title="HEADPHONES"

@@ -37,4 +37,8 @@
 }
 
 
-/* Group Card */
+/* Buttons */
+
+button {
+    font-weight: normal;
+}
