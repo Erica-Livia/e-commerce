@@ -5,7 +5,7 @@ import speakers from '../../assets/speakers/speakers1.png'
 import earphone2 from '../../assets/earphones/earphone2s.png';
 import GroupCard from "../../components/Cards/GroupCard.jsx";
 import '../../custom.css';
-import ManCard from "../Cards/ManCard.jsx";
+import ManCard from "../../components/Cards/ManCard.jsx";
 
 function HomePage () {
     return (

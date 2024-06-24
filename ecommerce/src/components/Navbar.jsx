@@ -1,14 +1,15 @@
 import React, {useState} from "react";
 import {BrowserRouter as Router, Routes, Route, Link, NavLink} from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
-import Headphone from "./Headphone/Headphone.jsx";
-import Speaker from "./Speaker/Speaker.jsx";
-import Earphone from "./Eearphone/Earphone.jsx";
+import Headphone from "../views/Headphone/Headphone.jsx";
+import Speaker from "../views/Speaker/Speaker.jsx";
+import Earphone from "../views/Eearphone/Earphone.jsx";
 import { CartProvider } from "../components/Cart/CartContext.jsx";
-import HomePage from "./HomePage/HomePage.jsx";
+import HomePage from "../views/HomePage/HomePage.jsx";
 import '../custom.css';
-import ProductDetails from "./ProductDetails/ProductDetails.jsx";
+import ProductDetails from "../views/ProductDetails/ProductDetails.jsx";
 import CartModal from "../components/Cart/CartModal.jsx"
+import CheckoutPage from "../views/Chechout/CheckoutPage.jsx";
 
 
 
@@ -92,6 +93,8 @@ function Navbar() {
                 <Route path="/earphones" element={<Earphone/>}></Route>
                 <Route path="/speakers" element={<Speaker/>}></Route>
                 <Route path="/product-detail/:id" element={<ProductDetails />}></Route>
+                <Route path="/cart" element={<CartModal />}></Route>
+                <Route path="/checkout" element={<CheckoutPage />}></Route>
             </Routes>
             <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
 

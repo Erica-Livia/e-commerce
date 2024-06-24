@@ -1,8 +1,8 @@
 import React from "react";
-import ProductCard from "../Cards/ProductCard.jsx";
+import ProductCard from "../../components/Cards/ProductCard.jsx";
 import yx1 from "../../assets/earphones/earphones.png";
-import GroupCard from "../Cards/GroupCard.jsx";
-import ManCard from "../Cards/ManCard.jsx";
+import GroupCard from "../../components/Cards/GroupCard.jsx";
+import ManCard from "../../components/Cards/ManCard.jsx";
 import products from "../../data/products.json"
 import {useParams} from "react-router-dom";
 

@@ -1,8 +1,9 @@
 import {React, useState} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import GroupCard from '../Cards/GroupCard.jsx';
-import ManCard from '../Cards/ManCard.jsx';
-import ImageCombination from "../../components/ProductDetails/ImageCombination.jsx";
+import GroupCard from '../../components/Cards/GroupCard.jsx';
+import ManCard from '../../components/Cards/ManCard.jsx';
+import ImageCombination from "./ImageCombination.jsx";
+import { useCart} from "../../components/Cart/CartContext.jsx";
 import products from "../../data/products.json";
 import markII from "../../assets/headphones/headphones4.png";
 import xx99 from "../../assets/headphones/headphones1.png";
@@ -56,6 +57,7 @@ function ProductDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
+    const { addToCart } = useCart();
     const product = [...headphones, ...speakers, ...earphones].find(product => product.id === id);
 
     if (!product) {
@@ -83,10 +85,21 @@ function ProductDetails() {
     };
 
     // Function to handle adding to cart
+    // const handleAddToCart = () => {
+    //     addToCart(product, quantity);
+    // };
+
     const handleAddToCart = () => {
-        // Implement add to cart functionality here
-        console.log(`Added ${quantity} of ${product.title} to cart.`);
+        addToCart({
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            image: imageMap[product.image],
+            quantity: quantity
+        });
+        alert(`Added ${quantity} of ${product.title} to cart.`);
     };
+
 
     return (
         <>
@@ -110,7 +123,7 @@ function ProductDetails() {
                             <h1 className="tracking-widest">NEW PRODUCT</h1>
                             <h2 className="text-black text-5xl w-3/5 py-5 font-bold">{productType}: {product.title}</h2>
                             <p className="text-footerText text-sm w-3/5 py-5 font-normal">{product.description}</p>
-                            <p className="text-black text-2xl w-3/5 py-5 font-bold">{product.price}</p>
+                            <p className="text-black text-2xl w-3/5 py-5 font-bold">${product.price}</p>
 
                             {/*  Add to CartContext Section  */}
                             <div className="flex items-center py-8">

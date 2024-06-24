@@ -3,9 +3,9 @@ import {useParams} from "react-router-dom";
 import markII from "../../assets/headphones/headphones4.png"
 import xx99 from "../../assets/headphones/headphones1.png"
 import xx59 from "../../assets/headphones/headphones2.png"
-import GroupCard from "../Cards/GroupCard.jsx";
-import ManCard from "../Cards/ManCard.jsx";
-import ProductCard from "../Cards/ProductCard.jsx";
+import GroupCard from "../../components/Cards/GroupCard.jsx";
+import ManCard from "../../components/Cards/ManCard.jsx";
+import ProductCard from "../../components/Cards/ProductCard.jsx";
 import products from "../../data/products.json";
 
 const {headphones} = products;
