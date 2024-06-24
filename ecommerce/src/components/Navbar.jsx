@@ -7,6 +7,7 @@ import Earphone from "./Eearphone/Earphone.jsx";
 import Cart from "./Cart/Cart.jsx";
 import HomePage from "./HomePage/HomePage.jsx";
 import '../custom.css';
+import ProductDetails from "./ProductDetails/ProductDetails.jsx";
 
 
 function Navbar() {
@@ -18,7 +19,7 @@ function Navbar() {
 
     return (
         <Router>
-        <nav className="text-white pt-3 px-8 font-manrope bg-darkBgColor w-full md:px-32 sm:px-8">
+        <nav className="text-white pt-3 px-8 font-manrope bg-darkBgColor w-full md:px-40 sm:px-8">
             <div className="container mx-auto flex justify-between items-center border-b-gray-500 border-b-2 sm:pb-4 ">
                 <button
                     className="md:hidden text-white p-2 rounded focus:outline-none"
@@ -87,6 +88,7 @@ function Navbar() {
                 <Route path="/earphones" element={<Earphone/>}></Route>
                 <Route path="/speakers" element={<Speaker/>}></Route>
                 <Route path="/cart" element={<Cart/>}></Route>
+                <Route path="/product-detail/:id" element={<ProductDetails />}></Route>
             </Routes>
         </Router>
     );

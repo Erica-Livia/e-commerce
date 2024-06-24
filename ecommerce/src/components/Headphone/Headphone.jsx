@@ -1,76 +1,61 @@
 import React from "react";
+import {useParams} from "react-router-dom";
 import markII from "../../assets/headphones/headphones4.png"
 import xx99 from "../../assets/headphones/headphones1.png"
 import xx59 from "../../assets/headphones/headphones2.png"
+import GroupCard from "../Cards/GroupCard.jsx";
+import ManCard from "../Cards/ManCard.jsx";
+import ProductCard from "../Cards/ProductCard.jsx";
+import products from "../../data/products.json";
+
+const {headphones} = products;
+const imageMap = {
+    "headphones4.png": markII,
+    "headphones1.png": xx99,
+    "headphones2.png": xx59
+}
 
 function Headphone() {
+    const { id } = useParams();
+    const headphone = headphones.find(headphone => headphone.id === id);
+
     return(
         <>
-            <div className="">
+            <div className="items-center">
                 {/* Headphone HeroSection */}
-                <div className="bg-lightBlack flex justify-center text-white text-4xl h-2/3 w-full py-10">
+                <div className="bg-lightBlack flex justify-around text-white text-4xl h-2/3 w-full py-20">
                     <h1>HEADPHONES</h1>
                 </div>
 
-                {/* HeaphoneList Display */}
+                {/* HeadphoneList Display */}
+                {/* Item Product Card*/}
 
                 {/* Item1 */}
-                <div className="mx-auto flex justify-around items-center px-28 py-8">
-                    <div className="w-1/2">
-                        <img src={markII} alt="headphones" className="w-80 h-100 bg-darkWhite p-20"/>
-                    </div>
-
-                    {/* Description */}
-                    <div className="text-cta w-1/2">
-                        <h1>NEW PRODUCT</h1>
-
-                        <h2 className="text-black text-5xl w-3/5 py-5 font-bold ">XX99 MARK II HEADPHONES</h2>
-                        <p className="text-lightBlack text-sm w-3/5 py-5 font-light">Experience natural, lifelike audio
-                            and exceptional build quality made for the passionate music enthusiast.</p>
-                        <button className="pt-3 pb-3 pr-5 pl-5 w-fit text-sm text-white bg-cta hover:bg-lightCta">SEE
-                            PRODUCT
-                        </button>
-                    </div>
-                </div>
-
-                {/* Item 2 */}
-                <div className="mx-auto flex justify-around items-center px-28 py-8">
-                    {/* Description */}
-                    <div className="text-cta w-1/2">
-                        <h1>NEW PRODUCT</h1>
-
-                        <h2 className="text-black text-5xl w-3/5 py-5 font-bold ">XX99 MARK II HEADPHONES</h2>
-                        <p className="text-lightBlack text-sm w-3/5 py-5 font-light">Experience natural, lifelike audio
-                            and exceptional build quality made for the passionate music enthusiast.</p>
-                        <button className="pt-3 pb-3 pr-5 pl-5 w-fit text-sm text-white bg-cta hover:bg-lightCta">SEE
-                            PRODUCT
-                        </button>
-                    </div>
-
-                    <div className="w-1/2">
-                        <img src={xx99} alt="headphones" className="w-80 h-100 bg-darkWhite p-20"/>
-                    </div>
+                <div className="px-4 md:px-10 lg:px-40 py-10 mx-auto">
+                    {headphones.map(headphone =>(
+                        <ProductCard
+                            image = {imageMap[headphone.image]}
+                            title ={headphone.title}
+                            description={headphone.description}
+                            id={headphone.id}
+                            route={headphone.route}
+                            reverse={headphone.id % 2 === 0}
+                        />
+                        )
+                    )}
 
                 </div>
 
-                {/* Item 3 */}
-                <div className="mx-auto flex justify-around items-center px-28 py-8">
-                    <div className="w-1/2">
-                        <img src={xx59} alt="headphones" className="w-80 h-100 bg-darkWhite p-20"/>
-                    </div>
-                    {/* Description */}
-                    <div className="text-cta w-1/2">
-                        <h1>NEW PRODUCT</h1>
+                <>
+                    <GroupCard />
+                </>
 
-                        <h2 className="text-black text-5xl w-3/5 py-5 font-bold ">XX99 MARK II HEADPHONES</h2>
-                        <p className="text-lightBlack text-sm w-3/5 py-5 font-light">Experience natural, lifelike audio
-                            and exceptional build quality made for the passionate music enthusiast.</p>
-                        <button className="pt-3 pb-3 pr-5 pl-5 w-fit text-sm text-white bg-cta hover:bg-lightCta">SEE
-                            PRODUCT
-                        </button>
-                    </div>
-                </div>
+                <>
+                    <ManCard />
+                </>
+
             </div>
+
         </>
     )
 }

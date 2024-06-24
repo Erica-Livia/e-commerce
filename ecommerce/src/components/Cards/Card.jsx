@@ -17,7 +17,6 @@ function Card({ image, title, description, route }) {
                 </Link>
                     <IoIosArrowForward className="text-cta"/>
                 </div>
-
             </div>
         </div>
     );

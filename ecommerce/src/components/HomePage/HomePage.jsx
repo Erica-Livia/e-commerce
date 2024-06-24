@@ -2,8 +2,10 @@ import React from "react";
 import headphone from '../../assets/headphones/headphonesHero1.png';
 import speaker from '../../assets/speakers/speaker-cut.png';
 import speakers from '../../assets/speakers/speakers1.png'
+import earphone2 from '../../assets/earphones/earphone2s.png';
 import GroupCard from "../../components/Cards/GroupCard.jsx";
 import '../../custom.css';
+import ManCard from "../Cards/ManCard.jsx";
 
 function HomePage () {
     return (
@@ -12,13 +14,13 @@ function HomePage () {
 
                 {/* HomePage HeroSection */}
                 <div id="heroSection"
-                     className="bg-darkBgColor mx-auto px-5 flex justify-center items-center md:justify-between md:px-32 overflow-hidden">
+                     className="bg-darkBgColor mx-auto px-4 lg:px-40  flex justify-center items-center md:justify-between md:px-40 overflow-hidden">
                     <div className="text-footerText w-full md:w-1/2 text-center md:text-left py-16 md:py-14">
                         <h1 className="newProduct tracking-widest">NEW PRODUCT</h1>
                         <h2 className="text-white text-2xl sm:text-3xl md:text-5xl lg:text-6xl w-1/2 md:w-full md:m-0 m-auto py-3 font-semibold tracking-wider">XX99
                             MARK II HEADPHONES</h2>
                         <p className="text-white text-sm sm:text-sm md:text-base lg:text-sm w-4/5 sm:w-3/5 md:w-4/5 md:m-0 m-auto py-2 pb-5 font-light tracking-wide leading-6">
-                            Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
+                            Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
                         </p>
                         <button
                             className="py-3 px-8 w-fit text-sm font-semibold text-white bg-cta hover:bg-lightCta tracking-wider">SEE
@@ -32,12 +34,12 @@ function HomePage () {
 
 
                 {/* Links to Products Page */}
-                <div className="px-8 md:px-12 sm:px">
+                <div className="px-8 md:px-16 sm:px">
                     <GroupCard/>
                 </div>
 
                 {/* ZX9 SpeakerSection */}
-                <div className="px-4 md:px-10 lg:px-32 py-10 relative overflow-hidden">
+                <div className="px-4 md:px-10 lg:px-40 py-10 relative overflow-hidden">
                     {/* Content Container */}
                     <div
                         className="bg-cta px-16 mx-auto flex flex-col md:flex-row justify-around items-center pt-20 rounded-md relative z-10 overflow-hidden">
@@ -73,7 +75,7 @@ function HomePage () {
 
 
                 {/*ZX7 SpeakerSection */}
-                <div className="px-4 md:px-10 lg:px-32 py-10">
+                <div className="px-4 md:px-10 lg:px-40 py-10">
                     <div
                         className="mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center py-14 rounded-md"
                         style={{
@@ -86,7 +88,7 @@ function HomePage () {
                         <div className="text-footerText w-full md:w-1/2 text-left md:text-left py-5 px-20 md:py-10">
                             <h2 className="text-black text-4xl md:text-5xl py-3 md:py-5 font-bold">ZX7 SPEAKER</h2>
                             <button
-                                className="pt-3 pb-3 pr-5 pl-5 my-3 text-sm font-semibold text-black border-2 border-black hover:opacity-80">SEE
+                                className="py-3 px-8 my-2 text-sm font-semibold text-black border-2 border-black hover:opacity-80">SEE
                                 PRODUCT
                             </button>
                         </div>
@@ -95,9 +97,21 @@ function HomePage () {
 
 
                 {/* YX1 EarphoneSection   */}
-
-                {/*  DescriptionSection with ManPictures   */}
-
+                <div className="px-4 md:px-10 lg:px-40 py-10 flex">
+                    <div>
+                        <img src={earphone2} className='w-full border-2 rounded-5xl'/>
+                    </div>
+                    <div className="center m-auto">
+                        <h2 className="text-black text-4xl md:text-5xl py-3 md:py-5 font-bold">YX1 EARPHONES</h2>
+                        <button
+                            className="py-3 px-8 my-2 text-sm font-semibold text-black border-2 border-black hover:opacity-80">SEE
+                            PRODUCT
+                        </button>
+                    </div>
+                </div>
+                <>
+                    <ManCard />
+                </>
             </div>
         </div>
     )
