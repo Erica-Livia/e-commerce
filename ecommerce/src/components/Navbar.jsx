@@ -4,20 +4,24 @@ import { IoCartOutline } from "react-icons/io5";
 import Headphone from "./Headphone/Headphone.jsx";
 import Speaker from "./Speaker/Speaker.jsx";
 import Earphone from "./Eearphone/Earphone.jsx";
-import Cart from "./Cart/Cart.jsx";
+import { CartProvider } from "../components/Cart/CartContext.jsx";
 import HomePage from "./HomePage/HomePage.jsx";
 import '../custom.css';
 import ProductDetails from "./ProductDetails/ProductDetails.jsx";
+import CartModal from "../components/Cart/CartModal.jsx"
+
 
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false)
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
 
     return (
+        <CartProvider>
         <Router>
         <nav className="text-white pt-3 px-8 font-manrope bg-darkBgColor w-full md:px-40 sm:px-8">
             <div className="container mx-auto flex justify-between items-center border-b-gray-500 border-b-2 sm:pb-4 ">
@@ -60,7 +64,7 @@ function Navbar() {
                              className={({isActive}) => isActive ? "text-lightCta" : "text-white hover:text-lightCta"}>EARPHONES</NavLink>
                 </div>
                 <div className='block'>
-                    <a href="/" className="text-xl hover:text-lightCta"><IoCartOutline/></a>
+                    <button onClick={() => setIsCartOpen(true)} className="text-xl hover:text-lightCta"><IoCartOutline/></button>
                 </div>
 
 
@@ -87,10 +91,12 @@ function Navbar() {
                 <Route path="/headphones" element={<Headphone/>}></Route>
                 <Route path="/earphones" element={<Earphone/>}></Route>
                 <Route path="/speakers" element={<Speaker/>}></Route>
-                <Route path="/cart" element={<Cart/>}></Route>
                 <Route path="/product-detail/:id" element={<ProductDetails />}></Route>
             </Routes>
+            <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+
         </Router>
+        </CartProvider>
     );
 }
 

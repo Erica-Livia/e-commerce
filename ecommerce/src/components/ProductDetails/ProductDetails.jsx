@@ -112,7 +112,7 @@ function ProductDetails() {
                             <p className="text-footerText text-sm w-3/5 py-5 font-normal">{product.description}</p>
                             <p className="text-black text-2xl w-3/5 py-5 font-bold">{product.price}</p>
 
-                            {/*  Add to Cart Section  */}
+                            {/*  Add to CartContext Section  */}
                             <div className="flex items-center py-8">
                                 <div className="text-lightBlack bg-darkWhite flex items-center p-2">
                                     <button onClick={handleDecrement} className="px-3 py-1 text-lg">-</button>
