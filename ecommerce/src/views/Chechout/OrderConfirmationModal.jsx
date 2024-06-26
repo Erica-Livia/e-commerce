@@ -27,7 +27,7 @@ const OrderConfirmationModal = ({ isOpen, onClose }) => {
                             <div key={index} className="flex items-center gap-x-4">
                                 <img src={item.image} alt={item.title} className="w-16 h-16 rounded-lg"/>
                                 <div className="flex flex-col text-start">
-                                    <span className="text-sm font-bold">{item.title}</span>
+                                    <span className="text-xs font-bold">{item.title}</span>
                                     <span className="text-sm text-footerText">x{item.quantities}</span>
                                     <span className="text-sm text-footerText">${(item.price * item.quantities)}</span>
                                 </div>

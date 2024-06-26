@@ -18,7 +18,7 @@
     height: 85vh;
 }
 
-@media (min-width: 640px) and (max-width: 1024px) {
+@media (min-width: 640px) and (max-width: 1020px) {
     #heroSection {
         background-image: url("assets/headphones/headphonesHero2.png") !important;
         background-position: center;
