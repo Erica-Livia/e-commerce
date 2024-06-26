@@ -10,7 +10,7 @@ function ProductCard({ image, title, description, price, route, reverse }) {
     };
 
     return (
-        <div className={`flex flex-col md:flex-col lg:flex-row ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} justify-around items-center px-4 lg:px-28 py-8 gap-y-8 md:gap-x-24`}>
+        <div className={`flex flex-col md:flex-col lg:flex-row ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} justify-around items-center px-4 lg:px-28 py-8 gap-y-8 md:gap-x-24`}>
             <div className="w-full lg:w-4/5 mx-auto bg-darkWhite">
                 <img
                     src={image}

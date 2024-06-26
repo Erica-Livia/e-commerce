@@ -31,14 +31,15 @@ function Headphone() {
                 {/* Item Product Card*/}
 
                 <div className="px-4 md:px-10 lg:px-40 py-10 mx-auto">
-                    {headphones.map(headphone =>(
+                    {headphones.map((headphone, index) =>(
                         <ProductCard
+                            key={headphone.id}
                             image = {imageMap[headphone.image]}
                             title ={headphone.title}
                             description={headphone.description}
                             id={headphone.id}
                             route={headphone.route}
-                            reverse={headphone.id % 2 === 0}
+                            reverse={index % 2 !== 0}
                         />
                         )
                     )}
