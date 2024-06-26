@@ -7,8 +7,17 @@ const CartModal = ({ isOpen, onClose }) => {
 
     if (!isOpen) return null;
 
+    const handleClickOutside = (e) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
     return (
-        <div className="fixed top-0 right-0 w-full h-full bg-black bg-opacity-50 flex justify-center sm:justify-center md:justify-end">
+        <div
+            className="fixed top-0 right-0 w-full h-full bg-black bg-opacity-50 flex justify-center sm:justify-center md:justify-end"
+            onClick={handleClickOutside}
+        >
             <div className="bg-white w-full md:w-2/5 h-fit p-4 mt-28 mx-5 sm:mt-38 sm:mr-0 md:mr-16 md:mt-24 overflow-auto border rounded-xl md:rounded-lg lg:w-1/4 xl:w-1/5 lg:mt-20 lg:mr-20 xl:mr-20">
                 <div className="flex justify-between items-center">
                     <h2 className="text-xl font-bold">Cart</h2>
@@ -23,7 +32,6 @@ const CartModal = ({ isOpen, onClose }) => {
                             <div className="bg-darkWhite p-6 rounded">
                                 <img src={item.image} alt={item.title} className="w-8 h-8 object-cover"/>
                             </div>
-
                             <div className="flex-1 ml-4">
                                 <h3 className="font-bold">{item.title}</h3>
                                 <div className="flex justify-between">
@@ -34,7 +42,6 @@ const CartModal = ({ isOpen, onClose }) => {
                                         <button onClick={() => incrementQuantity(item.id)} className="px-2 text-footerText">+</button>
                                     </div>
                                 </div>
-
                             </div>
                         </li>
                     ))}

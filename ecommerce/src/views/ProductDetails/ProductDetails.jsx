@@ -102,7 +102,7 @@ function ProductDetails() {
                 <div className="flex justify-start items-center py-8">
                     <button
                         onClick={() => navigate(-1)}
-                        className="text-black text-sm py-2 border-none hover:bg-gray-200"
+                        className="text-black text-sm py-2 border-none hover:underline"
                     >
                         Go Back
                     </button>
