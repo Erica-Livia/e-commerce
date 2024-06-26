@@ -1,5 +1,3 @@
-// Navbar.jsx
-
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom';
 import { IoCartOutline } from 'react-icons/io5';
@@ -7,6 +5,7 @@ import Headphone from '../views/Headphone/Headphone.jsx';
 import Speaker from '../views/Speaker/Speaker.jsx';
 import Earphone from '../views/Eearphone/Earphone.jsx';
 import { CartProvider, useCart } from '../components/Cart/CartContext.jsx';
+import ScrollToTop from "./ScrollToTop.jsx";
 import HomePage from '../views/HomePage/HomePage.jsx';
 import '../custom.css';
 import ProductDetails from '../views/ProductDetails/ProductDetails.jsx';
@@ -43,6 +42,7 @@ function Navbar() {
 
     return (
         <Router>
+            <ScrollToTop />
             <nav className="text-white pt-3 px-8 font-manrope bg-darkBgColor w-full lg:px-40 md:px-20 sm:px-8">
                 <div className="container mx-auto flex justify-between items-center border-b-gray-500 border-b-2 sm:pb-4 ">
                     <button

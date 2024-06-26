@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../../components/Cart/CartContext';
 import OrderConfirmationModal from './OrderConfirmationModal';
 import '../../custom.css';
@@ -19,20 +19,50 @@ const CheckoutPage = () => {
     const [paymentMethod, setPaymentMethod] = useState('e-Money');
     const [eMoneyNumber, setEMoneyNumber] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [errors, setErrors] = useState({});
+    const [isFormValid, setIsFormValid] = useState(false);
+
+    const validateForm = () => {
+        const newErrors = {};
+
+        if (!billingDetails.name && isFormValid) newErrors.name = 'Name is required';
+        if (!billingDetails.email && isFormValid) {
+            newErrors.email = 'Email is required';
+        }
+        if (!billingDetails.phoneNumber && isFormValid) newErrors.phoneNumber = 'Phone number is required';
+
+        if (!shippingInfo.address && isFormValid) newErrors.address = 'Address is required';
+        if (!shippingInfo.zipCode && isFormValid) newErrors.zipCode = 'ZIP code is required';
+        if (!shippingInfo.city && isFormValid) newErrors.city = 'City is required';
+        if (!shippingInfo.country && isFormValid) newErrors.country = 'Country is required';
+
+        if (paymentMethod === 'e-Money' && eMoneyNumber) {
+
+        }
+
+        setErrors(newErrors);
+        setIsFormValid(Object.keys(newErrors).length === 0);
+    };
+
+
+    useEffect(() => {
+        validateForm();
+    }, [billingDetails, paymentMethod, eMoneyNumber]);
 
     const handlePaymentMethodChange = (method) => {
         setPaymentMethod(method);
     };
 
     const handleCheckout = () => {
-        // Open the modal on checkout
-        setIsModalOpen(true);
+        if (isFormValid) {
+            setIsModalOpen(true);
+        } else {
+            validateForm();
+        }
     };
 
     const handleCloseModal = () => {
-
         setIsModalOpen(false);
-
     };
 
     return (
@@ -57,9 +87,10 @@ const CheckoutPage = () => {
                                 id="name"
                                 placeholder="Name"
                                 value={billingDetails.name}
-                                onChange={(e) => setBillingDetails({...billingDetails, name: e.target.value})}
+                                onChange={(e) => setBillingDetails({ ...billingDetails, name: e.target.value })}
                                 className="w-full border rounded-md px-3 py-2 mb-2"
                             />
+                            {errors.name && <span className="text-red-500 text-sm">{errors.name}</span>}
                         </div>
                         <div className="flex-1">
                             <label htmlFor="email" className="block mb-1 text-sm">Email</label>
@@ -68,9 +99,10 @@ const CheckoutPage = () => {
                                 id="email"
                                 placeholder="Email Address"
                                 value={billingDetails.email}
-                                onChange={(e) => setBillingDetails({...billingDetails, email: e.target.value})}
+                                onChange={(e) => setBillingDetails({ ...billingDetails, email: e.target.value })}
                                 className="w-full border rounded-md px-3 py-2 mb-2"
                             />
+                            {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
                         </div>
                     </div>
 
@@ -80,9 +112,10 @@ const CheckoutPage = () => {
                         id="phoneNumber"
                         placeholder="Phone Number"
                         value={billingDetails.phoneNumber}
-                        onChange={(e) => setBillingDetails({...billingDetails, phoneNumber: e.target.value})}
+                        onChange={(e) => setBillingDetails({ ...billingDetails, phoneNumber: e.target.value })}
                         className="w-1/2 border rounded-md px-3 py-2 mb-4"
                     />
+                    {errors.phoneNumber && <span className="text-red-500 text-sm">{errors.phoneNumber}</span>}
 
                     <h2 className="text-l text-cta mb-4 font-normal text-sm">SHIPPING INFO</h2>
 
@@ -91,9 +124,10 @@ const CheckoutPage = () => {
                         id="address"
                         placeholder="Address"
                         value={shippingInfo.address}
-                        onChange={(e) => setShippingInfo({...shippingInfo, address: e.target.value})}
+                        onChange={(e) => setShippingInfo({ ...shippingInfo, address: e.target.value })}
                         className="w-full border rounded-md px-3 py-2 mb-2"
                     />
+                    {errors.address && <span className="text-red-500 text-sm">{errors.address}</span>}
 
                     <div className="flex flex-col lg:flex-row lg:space-x-4 mb-4">
                         <div className="flex-1">
@@ -103,9 +137,10 @@ const CheckoutPage = () => {
                                 id="zipCode"
                                 placeholder="ZIP Code"
                                 value={shippingInfo.zipCode}
-                                onChange={(e) => setShippingInfo({...shippingInfo, zipCode: e.target.value})}
+                                onChange={(e) => setShippingInfo({ ...shippingInfo, zipCode: e.target.value })}
                                 className="w-full border rounded-md px-3 py-2 mb-2"
                             />
+                            {errors.zipCode && <span className="text-red-500 text-sm">{errors.zipCode}</span>}
                         </div>
                         <div className="flex-1">
                             <label htmlFor="city" className="block mb-1 text-sm">City</label>
@@ -114,9 +149,10 @@ const CheckoutPage = () => {
                                 id="city"
                                 placeholder="City"
                                 value={shippingInfo.city}
-                                onChange={(e) => setShippingInfo({...shippingInfo, city: e.target.value})}
+                                onChange={(e) => setShippingInfo({ ...shippingInfo, city: e.target.value })}
                                 className="w-full border rounded-md px-3 py-2 mb-2"
                             />
+                            {errors.city && <span className="text-red-500 text-sm">{errors.city}</span>}
                         </div>
                     </div>
 
@@ -128,9 +164,10 @@ const CheckoutPage = () => {
                                 id="country"
                                 placeholder="Country"
                                 value={shippingInfo.country}
-                                onChange={(e) => setShippingInfo({...shippingInfo, country: e.target.value})}
+                                onChange={(e) => setShippingInfo({ ...shippingInfo, country: e.target.value })}
                                 className="w-1/2 border rounded-md px-3 py-2 mb-2"
                             />
+                            {errors.country && <span className="text-red-500 text-sm">{errors.country}</span>}
                         </div>
                     </div>
 
@@ -158,13 +195,16 @@ const CheckoutPage = () => {
                         <label htmlFor="cash">Cash On Delivery</label>
                     </div>
                     {paymentMethod === 'e-Money' && (
-                        <input
-                            type="text"
-                            placeholder="e-Money Number"
-                            value={eMoneyNumber}
-                            onChange={(e) => setEMoneyNumber(e.target.value)}
-                            className="w-full border rounded-md px-3 py-2 mb-4"
-                        />
+                        <>
+                            <input
+                                type="text"
+                                placeholder="e-Money Number"
+                                value={eMoneyNumber}
+                                onChange={(e) => setEMoneyNumber(e.target.value)}
+                                className="w-full border rounded-md px-3 py-2 mb-4"
+                            />
+                            {errors.eMoneyNumber && <span className="text-red-500 text-sm">{errors.eMoneyNumber}</span>}
+                        </>
                     )}
                 </div>
                 <div className="lg:w-2/5 lg:pl-4 mt-8 h-fit lg:mt-0 bg-white p-8 rounded-xl">
@@ -199,7 +239,7 @@ const CheckoutPage = () => {
                     </div>
                     <button
                         onClick={handleCheckout}
-                        className="w-full bg-cta text-white py-2 mt-4 hover:bg-lightCta"
+                        className={`w-full py-2 mt-4 ${isFormValid ? 'bg-cta text-white hover:bg-lightCta' : 'bg-gray-300 text-gray-600 cursor-not-allowed'}`}
                     >
                         Continue & Pay
                     </button>

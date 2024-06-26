@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdDone } from "react-icons/md";
 import { Link } from "react-router-dom";
-import {useCart} from "../../components/Cart/CartContext.jsx";
+import { useCart } from "../../components/Cart/CartContext.jsx";
 
-const OrderConfirmationModal = ({ isOpen, onClose, items = [] }) => {
+const OrderConfirmationModal = ({ isOpen, onClose }) => {
+    const [showAllItems, setShowAllItems] = useState(false);
+    const { cart, total } = useCart();
+
     if (!isOpen) return null;
-    const { cart, total, price, title, image, quantity } = useCart();
+
+    const displayedItems = showAllItems ? cart : cart.slice(0, 1);
+
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white rounded-lg p-6 w-96 text-center">
@@ -18,16 +23,24 @@ const OrderConfirmationModal = ({ isOpen, onClose, items = [] }) => {
 
                 <div className="flex justify-between gap-x-0 items-stretch py-4 pr-8 pl-4 h-max mt-6">
                     <div className="flex flex-col gap-y-4 py-6 pr-6 pl-2 bg-darkWhite rounded-l-lg">
-                        {cart.map((item, index) => (
+                        {displayedItems.map((item, index) => (
                             <div key={index} className="flex items-center gap-x-4">
                                 <img src={item.image} alt={item.title} className="w-16 h-16 rounded-lg"/>
                                 <div className="flex flex-col text-start">
                                     <span className="text-sm font-bold">{item.title}</span>
                                     <span className="text-sm text-footerText">x{item.quantities}</span>
-                                    <span className="text-sm text-footerText">${item.price * item.quantities }</span>
+                                    <span className="text-sm text-footerText">${(item.price * item.quantities)}</span>
                                 </div>
                             </div>
                         ))}
+                        {cart.length > 1 && (
+                            <button
+                                className="text-footerText underline text-sm mt-2"
+                                onClick={() => setShowAllItems(!showAllItems)}
+                            >
+                                {showAllItems ? "View less items" : `View all items (${cart.length})`}
+                            </button>
+                        )}
                     </div>
                     <div
                         className="relative flex-1 flex flex-col bg-lightBlack text-start border-l rounded-r-lg pl-4 pr-6 py-8">
@@ -36,12 +49,14 @@ const OrderConfirmationModal = ({ isOpen, onClose, items = [] }) => {
                     </div>
                 </div>
 
-                <button
+                <Link to="/">
+                    <button
                     onClick={onClose}
                     className="w-full mt-6 bg-cta text-white py-2 px-4 tracking-wide hover:bg-lightCta"
                 >
-                    <Link to="/">BACK TO HOME</Link>
-                </button>
+                   BACK TO HOME
+                    </button>
+                </Link>
             </div>
         </div>
     );
