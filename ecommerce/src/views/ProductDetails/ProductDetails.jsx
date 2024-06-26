@@ -1,9 +1,9 @@
-import {React, useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import GroupCard from '../../components/Cards/GroupCard.jsx';
 import ManCard from '../../components/Cards/ManCard.jsx';
 import ImageCombination from "./ImageCombination.jsx";
-import { useCart} from "../../components/Cart/CartContext.jsx";
+import { useCart } from "../../components/Cart/CartContext.jsx";
 import products from "../../data/products.json";
 import markII from "../../assets/headphones/headphones4.png";
 import xx99 from "../../assets/headphones/headphones1.png";
@@ -20,6 +20,7 @@ import small21 from "../../assets/combination/small21.png";
 import small22 from "../../assets/combination/small22.png";
 import small31 from "../../assets/combination/small31.png";
 import small32 from "../../assets/combination/small32.png";
+import ProductLike from "../../components/Cards/ProductLike.jsx";
 
 const { headphones, speakers, earphones } = products;
 
@@ -45,7 +46,6 @@ const randomImagesCombination = [
     ["small11.png", "small12.png", "big1.png"],
     ["small21.png", "small22.png", "big2.png"],
     ["small31.png", "small32.png", "big3.png"],
-
 ];
 
 function getRandomCombination() {
@@ -85,10 +85,6 @@ function ProductDetails() {
     };
 
     // Function to handle adding to cart
-    // const handleAddToCart = () => {
-    //     addToCart(product, quantity);
-    // };
-
     const handleAddToCart = () => {
         addToCart({
             id: product.id,
@@ -99,7 +95,6 @@ function ProductDetails() {
         });
         alert(`Added ${quantity} of ${product.title} to cart.`);
     };
-
 
     return (
         <>
@@ -114,19 +109,19 @@ function ProductDetails() {
                 </div>
 
                 <div>
-                    <div className="flex justify-around items-center py-8">
-                        <div className="w-1/2 mx-auto">
+                    <div className="flex flex-col md:flex-row justify-around items-center py-8">
+                        <div className="w-full md:w-1/2 mx-auto">
                             <img src={imageMap[product.image]} alt={product.title}
-                                 className="w-80 h-100 bg-darkWhite p-20"/>
+                                 className="w-full md:w-80 h-auto bg-darkWhite p-20 mx-auto" />
                         </div>
-                        <div className="text-cta w-1/2 mx-auto">
-                            <h1 className="tracking-widest">NEW PRODUCT</h1>
-                            <h2 className="text-black text-5xl w-3/5 py-5 font-bold">{productType}: {product.title}</h2>
-                            <p className="text-footerText text-sm w-3/5 py-5 font-normal">{product.description}</p>
-                            <p className="text-black text-2xl w-3/5 py-5 font-bold">${product.price}</p>
+                        <div className="text-cta w-full md:w-1/2 mx-auto mt-8 md:mt-0">
+                            <h1 className="tracking-widest text-left md:text-left">NEW PRODUCT</h1>
+                            <h2 className="text-black text-3xl md:text-5xl w-full md:w-3/5 py-3 font-bold text-left">{productType}: {product.title}</h2>
+                            <p className="text-footerText text-sm w-full md:w-3/5 py-5 font-normal text-left">{product.description}</p>
+                            <p className="text-black text-2xl w-full md:w-3/5 py-5 font-bold text-left">${product.price}</p>
 
-                            {/*  Add to CartContext Section  */}
-                            <div className="flex items-center py-8">
+                            {/* Add to CartContext Section */}
+                            <div className="flex items-center justify-start py-8">
                                 <div className="text-lightBlack bg-darkWhite flex items-center p-2">
                                     <button onClick={handleDecrement} className="px-3 py-1 text-lg">-</button>
                                     <span className="px-4 text-lg">{quantity}</span>
@@ -141,19 +136,16 @@ function ProductDetails() {
                                 </button>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
 
-                <div className="flex justify-around w-full">
-                    <div>
+                <div className="flex flex-col md:flex-row justify-around w-full mt-8">
+                    <div className="w-full md:w-1/2 px-4">
                         <h2 className="text-xl md:text-3xl py-4">FEATURES</h2>
-                        <p className="w-3/5 text-footerText">{product.longDescription}</p>
+                        <p className="text-footerText">{product.longDescription}</p>
                     </div>
 
-                    <div className="w-full">
+                    <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0">
                         <h2 className="text-xl md:text-3xl py-4">IN THE BOX</h2>
                         <ul className="text-footerText">
                             {product.inBox.map((item, index) => (
@@ -163,8 +155,8 @@ function ProductDetails() {
                     </div>
                 </div>
 
-                {/* images section   */}
-                <div className="w-full">
+                {/* Images section */}
+                <div className="w-full mt-8">
                     <ImageCombination images={imagesForCombination} />
                 </div>
 
@@ -172,8 +164,9 @@ function ProductDetails() {
                     {/* 3 cards */}
                 </div>
 
-                <GroupCard/>
-                <ManCard/>
+                <ProductLike />
+                <GroupCard />
+                <ManCard />
             </div>
         </>
     );
