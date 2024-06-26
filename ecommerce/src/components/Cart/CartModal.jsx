@@ -58,7 +58,7 @@ const CartModal = ({ isOpen, onClose }) => {
                         <h3 className="text-xl text-footerText font-normal">TOTAL</h3>
                         <h3 className="text-xl text-footerText font-normal">${total.toFixed(2)}</h3>
                     </div>
-                    <button className="w-full bg-cta text-white py-2 mt-2" onClick={handleCheckout}><Link to="/checkout" onClick={handleCheckout} className="w-full bg-cta text-white py-2 mt-2">CHECKOUT</Link></button>
+                    <Link to="/checkout" onClick={handleCheckout} className="w-full bg-cta text-white py-2 mt-2"><button className="w-full bg-cta text-white py-2 mt-2" onClick={handleCheckout}>CHECKOUT</button></Link>
                 </div>
             </div>
         </div>

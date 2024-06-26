@@ -30,9 +30,9 @@ const CheckoutPage = () => {
     };
 
     const handleCloseModal = () => {
-        // Close the modal and optionally reset state or navigate back to home
+
         setIsModalOpen(false);
-        // Reset states or navigate to home
+
     };
 
     return (

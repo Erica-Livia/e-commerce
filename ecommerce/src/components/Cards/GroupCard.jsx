@@ -12,20 +12,20 @@ function GroupCard() {
                     <Card
                         image={headphones}
                         title="HEADPHONES"
-                        route="headphones"
+                        route="/headphones/"
                     />
 
                     <Card
                         image={speakers}
                         title="SPEAKERS"
-                        route="speakers/"
+                        route="/speakers/"
                         className="speakerImage"
                     />
 
                     <Card
                         image={earphones}
                         title="EARPHONES"
-                        route="earphones/"
+                        route="/earphones/"
                     />
                 </div>
             </div>

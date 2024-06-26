@@ -6,6 +6,7 @@ import earphone2 from '../../assets/earphones/earphone2s.png';
 import GroupCard from "../../components/Cards/GroupCard.jsx";
 import '../../custom.css';
 import ManCard from "../../components/Cards/ManCard.jsx";
+import { Link } from "react-router-dom";
 
 function HomePage() {
     return (
@@ -21,9 +22,13 @@ function HomePage() {
                         <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl w-full lg:w-4/5 md:m-0 m-auto py-2 pb-5 font-light tracking-wide leading-6">
                             Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.
                         </p>
-                        <button className="py-3 px-8 w-fit text-sm md:text-base font-semibold text-white bg-cta hover:bg-lightCta tracking-wider">SEE
-                            PRODUCT
-                        </button>
+                        <Link to={"/product-detail/1"}>
+                            <button
+                                className="py-3 px-8 w-fit text-sm md:text-base font-semibold text-white bg-cta hover:bg-lightCta tracking-wider">SEE
+                                PRODUCT
+                            </button>
+                        </Link>
+
                     </div>
                     <div className="hidden lg:block md:w-1/2 overflow-hidden">
                         <img src={headphone} alt="headphones" className="w-full heroImage" />
@@ -55,9 +60,11 @@ function HomePage() {
                             <p className="text-white text-center lg:text-left text-sm sm:text-base md:text-lg lg:text-xl w-full lg:w-4/5 md:m-0 m-auto py-2 pb-5 font-light tracking-wide leading-6">
                                 Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
                             </p>
-                            <button className="py-3 px-4 md:px-8  my-2 text-sm md:text-base text-white font-semibold bg-lightBlack hover:bg-footerText">SEE
+                            <Link to={"/product-detail/5"}>
+                                <button className="py-3 px-4 md:px-8  my-2 text-sm md:text-base text-white font-semibold bg-lightBlack hover:bg-footerText">SEE
                                 PRODUCT
                             </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -76,10 +83,13 @@ function HomePage() {
                     >
                         <div className="text-footerText pl-4 w-full md:w-1/2 text-left py-5 px-10 md:px-20 md:py-10">
                             <h2 className="text-black text-2xl sm:text-3xl md:text-4xl py-3 md:py-5 font-bold">ZX7 SPEAKER</h2>
-                            <button
-                                className="py-3 px-4 md:px-8 my-2 text-sm md:text-base font-semibold text-black border-2 border-black hover:opacity-80">
-                                SEE PRODUCT
-                            </button>
+                            <Link to={"/product-detail/6"}>
+                                <button
+                                    className="py-3 px-4 md:px-8 my-2 text-sm md:text-base font-semibold text-black border-2 border-black hover:opacity-80">
+                                    SEE PRODUCT
+                                </button>
+                            </Link>
+
                         </div>
                     </div>
                 </div>
@@ -92,10 +102,13 @@ function HomePage() {
                         </div>
                         <div className="bg-darkWhite center m-auto p-8 md:p-12 lg:p-24 rounded-xl w-full md:w-auto">
                             <h2 className="text-black text-3xl md:text-4xl py-2 md:py-5 font-bold">YX1 EARPHONES</h2>
-                            <button
+
+                            <Link to={"/product-detail/7"}>
+                                <button
                                 className="py-2 px-4 md:px-8  my-2 text-sm md:text-base font-semibold text-black border-2 border-black hover:opacity-80">
                                 SEE PRODUCT
                             </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

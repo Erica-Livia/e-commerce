@@ -1,29 +1,46 @@
 import React from 'react';
 import { MdDone } from "react-icons/md";
 import { Link } from "react-router-dom";
+import {useCart} from "../../components/Cart/CartContext.jsx";
 
-
-const OrderConfirmationModal = ({ isOpen, onClose, total }) => {
+const OrderConfirmationModal = ({ isOpen, onClose, items = [] }) => {
     if (!isOpen) return null;
-
+    const { cart, total, price, title, image, quantity } = useCart();
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div className="bg-white rounded-lg p-6 w-96 text-center">
-                <div className="p-5 bg-cta w-fit rounded-full ">
-                    <MdDone className="text-white size-6 font-bold"/>
+                <div className="p-5 mx-5 bg-cta w-fit rounded-full ">
+                    <MdDone className="text-white size-5"/>
                 </div>
 
-                <h2 className="text-2xl text-start mt-4 font-bold mb-4">Thank You For Your Order!</h2>
-                <p className="text-lg text-start mb-6">Your order has been placed successfully.</p>
-                <div className="flex justify-between items-center py-2 border-t">
-                    <span className="text-lg font-bold">Grand Total</span>
-                    <span className="text-lg">${total.toFixed(2)}</span>
+                <h2 className="text-2xl text-start mx-5 mt-4 font-bold mb-4">THANK YOU FOR YOUR ORDER</h2>
+                <p className="text-sm text-start mx-5 text-footerText mb-6">You will receive an email confirmation shortly</p>
+
+                <div className="flex justify-between gap-x-0 items-stretch py-4 pr-8 pl-4 h-max mt-6">
+                    <div className="flex flex-col gap-y-4 py-6 pr-6 pl-2 bg-darkWhite rounded-l-lg">
+                        {cart.map((item, index) => (
+                            <div key={index} className="flex items-center gap-x-4">
+                                <img src={item.image} alt={item.title} className="w-16 h-16 rounded-lg"/>
+                                <div className="flex flex-col text-start">
+                                    <span className="text-sm font-bold">{item.title}</span>
+                                    <span className="text-sm text-footerText">x{item.quantities}</span>
+                                    <span className="text-sm text-footerText">${item.price * item.quantities }</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div
+                        className="relative flex-1 flex flex-col bg-lightBlack text-start border-l rounded-r-lg pl-4 pr-6 py-8">
+                        <span className="text-sm tracking-wide text-footerText font-normal pb-2">GRAND TOTAL</span>
+                        <span className="text-md text-white">${total.toFixed(2)}</span>
+                    </div>
                 </div>
+
                 <button
                     onClick={onClose}
-                    className="mt-6 bg-cta text-white py-2 px-4 rounded hover:bg-lightCta"
+                    className="w-full mt-6 bg-cta text-white py-2 px-4 tracking-wide hover:bg-lightCta"
                 >
-                   <Link to="/">Back to Home </Link>
+                    <Link to="/">BACK TO HOME</Link>
                 </button>
             </div>
         </div>
