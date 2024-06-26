@@ -20,7 +20,7 @@ function Navbar() {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
+            if (menuRef.current && !menuRef.current.contains(event.target) && !event.target.closest('button')) {
                 setIsOpen(false);
             }
         };
@@ -36,10 +36,12 @@ function Navbar() {
         setIsOpen(!isOpen);
     };
 
-    const closeMenu = () => {
+    const closeMenu = (event) => {
+        if (event) {
+            event.stopPropagation();
+        }
         setIsOpen(false);
     };
-
     return (
         <Router>
             <ScrollToTop />
@@ -76,7 +78,7 @@ function Navbar() {
                         </Link>
                     </div>
                     <div
-                        className={`lg:block md:hidden hidden space-x-4 gap-x-6 py-6 text-sm navLinks tracking-widest ${
+                        className={`lg:block md:hidden hidden space-x-10 gap-x-8 py-8 text-sm navLinks tracking-widest ${
                             isOpen ? 'block' : 'hidden'
                         }`}
                     >
@@ -120,7 +122,7 @@ function Navbar() {
                     <div className="block relative">
                         <button
                             onClick={() => setIsCartOpen(true)}
-                            className="text-2xl hover:text-lightCta relative flex top-1.5"
+                            className="text-2xl hover:text-lightCta relative flex top-0.5"
                         >
                             <IoCartOutline />
                             {cartCount > 0 && (
@@ -134,7 +136,7 @@ function Navbar() {
                         </button>
                     </div>
                 </div>
-                <div ref={menuRef} className={`${isOpen ? 'block' : 'hidden'} lg:hidden block justify-around text-center`}>
+                <div ref={menuRef} className={`${isOpen ? 'block' : 'hidden'} lg:hidden block justify-around text-center space-y-4 py-6`}>
                     <NavLink
                         to="/"
                         className={({ isActive }) =>
