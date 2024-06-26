@@ -18,12 +18,23 @@
     height: 85vh;
 }
 
-@media (max-width : 768px) {
+@media (min-width: 640px) and (max-width: 1024px) {
     #heroSection {
         background-image: url("assets/headphones/headphonesHero2.png") !important;
         background-position: center;
+        background-size: 90%;
         background-repeat: no-repeat;
-        height: 85vh;
+        height: 80vh;
+    }
+}
+
+@media (max-width : 640px) {
+    #heroSection {
+        background-image: url("assets/headphones/headphonesHero2.png") !important;
+        background-position: center;
+        background-size: 150%;
+        background-repeat: no-repeat;
+        height: 80vh;
     }
 }
 
@@ -41,4 +52,16 @@
 
 button {
     font-weight: normal;
+}
+
+/* Man Card Component */
+
+
+
+@media (max-width: 1024px) {
+    .manCard{
+        display: flex;
+        flex-direction: column-reverse !important;
+        width: 100%;
+    }
 }

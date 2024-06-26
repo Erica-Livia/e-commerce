@@ -24,10 +24,10 @@ function Navbar() {
     return (
         <CartProvider>
         <Router>
-        <nav className="text-white pt-3 px-8 font-manrope bg-darkBgColor w-full md:px-40 sm:px-8">
+        <nav className="text-white pt-3 px-8 font-manrope bg-darkBgColor w-full lg:px-40 md:px-20 sm:px-8">
             <div className="container mx-auto flex justify-between items-center border-b-gray-500 border-b-2 sm:pb-4 ">
                 <button
-                    className="md:hidden text-white p-2 rounded focus:outline-none"
+                    className="lg:hidden md:block text-white p-2 rounded focus:outline-none"
                     onClick={toggleMenu}
                 >
                     <svg
@@ -54,7 +54,7 @@ function Navbar() {
 
                 <div className="text-2xl font-bold md:text-center"><Link to='/'>audiophile</Link></div>
                 <div
-                    className={`hidden md:flex space-x-4 gap-x-6 py-6 text-sm navLinks tracking-widest ${isOpen ? 'hidden' : 'block'}`}>
+                    className={`lg:block md:hidden hidden space-x-4 gap-x-6 py-6 text-sm navLinks tracking-widest ${isOpen ? 'hidden' : 'block'}`}>
                     <NavLink to="/"
                              className={({isActive}) => isActive ? "text-lightCta" : "text-white hover:text-lightCta"}>HOME</NavLink>
                     <NavLink to="/headphones"
@@ -72,7 +72,7 @@ function Navbar() {
             </div>
             {isOpen && (
                 <>
-                    <div className="md:hidden block justify-around text-center">
+                    <div className="lg:hidden block justify-around text-center">
                         <NavLink to="/"
                                  className={({isActive}) => isActive ? "block px-2 py-1 text-lightCta" : "block px-2 py-1 text-white hover:text-lightCta"}>HOME</NavLink>
                         <NavLink to="/headphones"
