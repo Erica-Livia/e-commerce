@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useCart } from '../../components/Cart/CartContext.jsx';
+import { useCart } from '../../components/Cart/CartContext';
+import OrderConfirmationModal from './OrderConfirmationModal';
 
 const CheckoutPage = () => {
-    const { cart, total } = useCart(); // Assuming you have total and cart details available from CartContext
+    const { cart, total } = useCart();
     const [billingDetails, setBillingDetails] = useState({
         name: '',
         email: '',
@@ -16,21 +17,26 @@ const CheckoutPage = () => {
     });
     const [paymentMethod, setPaymentMethod] = useState('e-Money');
     const [eMoneyNumber, setEMoneyNumber] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handlePaymentMethodChange = (method) => {
         setPaymentMethod(method);
     };
 
     const handleCheckout = () => {
-        // For demo purposes, alerting the user with order details
-        alert(`Thank you for your order!\nTotal: $${total.toFixed(2)}`);
-        // Reset state or navigate back to home
+        // Open the modal on checkout
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        // Close the modal and optionally reset state or navigate back to home
+        setIsModalOpen(false);
+        // Reset states or navigate to home
     };
 
     return (
         <div className="px-4 md:px-10 lg:px-40 py-10 mx-auto">
             <div className="flex justify-between">
-                {/* Billing Details Section */}
                 <div className="w-1/2 pr-4">
                     <h2 className="text-2xl mb-4 font-bold">Billing Details</h2>
                     <input
@@ -54,7 +60,6 @@ const CheckoutPage = () => {
                         onChange={(e) => setBillingDetails({ ...billingDetails, phoneNumber: e.target.value })}
                         className="w-full border rounded-md px-3 py-2 mb-4"
                     />
-                    {/* Shipping Info Section */}
                     <h2 className="text-2xl mb-4 font-bold">Shipping Info</h2>
                     <input
                         type="text"
@@ -84,7 +89,6 @@ const CheckoutPage = () => {
                         onChange={(e) => setShippingInfo({ ...shippingInfo, country: e.target.value })}
                         className="w-full border rounded-md px-3 py-2 mb-4"
                     />
-                    {/* Payment Details Section */}
                     <h2 className="text-2xl mb-4 font-bold">Payment Details</h2>
                     <div className="flex items-center mb-4">
                         <input
@@ -108,7 +112,6 @@ const CheckoutPage = () => {
                         />
                     )}
                 </div>
-                {/* Order Summary Section */}
                 <div className="w-1/2 pl-4 border-l border-gray-300">
                     <h2 className="text-2xl mb-4 font-bold">Order Summary</h2>
                     <ul className="mb-4">
@@ -118,7 +121,7 @@ const CheckoutPage = () => {
                                 <div className="flex-1 ml-4">
                                     <h3 className="font-bold">{item.title}</h3>
                                     <p>${item.price}</p>
-                                    <p>Quantity: {item.quantity}</p>
+                                    <p>Quantity: {item.quantities}</p>
                                 </div>
                             </li>
                         ))}
@@ -143,6 +146,7 @@ const CheckoutPage = () => {
                     </button>
                 </div>
             </div>
+            <OrderConfirmationModal isOpen={isModalOpen} onClose={handleCloseModal} total={total} />
         </div>
     );
 };

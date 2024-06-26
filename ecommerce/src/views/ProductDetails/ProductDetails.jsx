@@ -95,7 +95,7 @@ function ProductDetails() {
             title: product.title,
             price: product.price,
             image: imageMap[product.image],
-            quantity: quantity
+            quantities: quantity,
         });
         alert(`Added ${quantity} of ${product.title} to cart.`);
     };

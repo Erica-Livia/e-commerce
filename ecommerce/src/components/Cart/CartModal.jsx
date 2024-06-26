@@ -1,5 +1,5 @@
 import React from 'react';
-import { useCart } from '../Cart/CartContext.jsx';
+import { useCart } from '../../components/Cart/CartContext.jsx';
 import { Link } from 'react-router-dom'
 
 const CartModal = ({ isOpen, onClose }) => {
@@ -28,12 +28,14 @@ const CartModal = ({ isOpen, onClose }) => {
                                 <p>${item.price}</p>
                                 <div className="flex items-center">
                                     <button onClick={() => decrementQuantity(item.id)} className="px-2">-</button>
-                                    <span className="px-4">{item.quantity}</span>
+                                    <span className="px-4">{item.quantities}</span>
                                     <button onClick={() => incrementQuantity(item.id)} className="px-2">+</button>
                                 </div>
                             </div>
                         </li>
+
                     ))}
+
                 </ul>
                 <div className="mt-4">
                     <h3 className="text-xl font-bold">Total: ${total.toFixed(2)}</h3>
