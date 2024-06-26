@@ -30,7 +30,6 @@ function Headphone() {
                 {/* HeadphoneList Display */}
                 {/* Item Product Card*/}
 
-                {/* Item1 */}
                 <div className="px-4 md:px-10 lg:px-40 py-10 mx-auto">
                     {headphones.map(headphone =>(
                         <ProductCard
