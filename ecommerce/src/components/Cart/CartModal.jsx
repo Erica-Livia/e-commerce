@@ -13,6 +13,14 @@ const CartModal = ({ isOpen, onClose }) => {
         }
     };
 
+    const handleCheckout = () => {
+        if (cart.length === 0) {
+            alert('Cart is empty. Add items to proceed.');
+        } else {
+            onClose();
+        }
+    };
+
     return (
         <div
             className="fixed top-0 right-0 w-full h-full bg-black bg-opacity-50 flex justify-center sm:justify-center md:justify-end"
@@ -23,7 +31,6 @@ const CartModal = ({ isOpen, onClose }) => {
                     <h2 className="text-xl font-bold">Cart</h2>
                     <div className="flex items-center">
                         <button onClick={removeAllFromCart} className="text-footerText text-sm mr-4">Remove All</button>
-                        <button onClick={onClose} className="text-black text-lg">&times;</button>
                     </div>
                 </div>
                 <ul className="mt-4">
@@ -51,9 +58,7 @@ const CartModal = ({ isOpen, onClose }) => {
                         <h3 className="text-xl text-footerText font-normal">TOTAL</h3>
                         <h3 className="text-xl text-footerText font-normal">${total.toFixed(2)}</h3>
                     </div>
-                    <Link to="/checkout">
-                        <button className="w-full bg-cta text-white py-2 mt-2">CHECKOUT</button>
-                    </Link>
+                    <button className="w-full bg-cta text-white py-2 mt-2" onClick={handleCheckout}><Link to="/checkout" onClick={handleCheckout} className="w-full bg-cta text-white py-2 mt-2">CHECKOUT</Link></button>
                 </div>
             </div>
         </div>

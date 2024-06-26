@@ -1,10 +1,6 @@
 import React, { createContext, useState, useContext } from 'react';
 
-const CartContext = new createContext();
-
-export const useCart = () => {
-    return useContext(CartContext);
-};
+const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
@@ -46,9 +42,28 @@ export const CartProvider = ({ children }) => {
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantities, 0);
 
+    const cartCount = cart.reduce((acc, item) => acc + item.quantities, 0);
+    const value = {
+        cart,
+        addToCart,
+        incrementQuantity,
+        decrementQuantity,
+        removeAllFromCart,
+        total,
+        cartCount,
+    };
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, incrementQuantity, decrementQuantity, removeAllFromCart, total }}>
+        <CartContext.Provider value={value}>
             {children}
         </CartContext.Provider>
     );
+};
+
+export const useCart = () => {
+    return useContext(CartContext);
+    if (!context) {
+        throw new Error('useCart must be used within a CartProvider');
+    }
+    return context;
 };

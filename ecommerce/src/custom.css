@@ -37,6 +37,12 @@
         height: 80vh;
     }
 }
+/*card Count icon*/
+
+.cardCount {
+    font-size:12px;
+}
+
 
 
 /* Card Style */
