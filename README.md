@@ -1,4 +1,4 @@
-# Audiophile E-commerce Website (In Production)
+# Audiophile E-commerce Website
 
 Welcome to the Audiophile e-commerce website, a high-performance platform designed for audio enthusiasts. This project is built using Vite and ReactJS to ensure fast load times, smooth user experience, and a modern development workflow.
 
@@ -31,6 +31,12 @@ Follow these steps to get the project up and running on your local machine:
    npm run dev
 5. **Open your browser and visit**:
    http://localhost:5173
+
+
+Author:
+Erica-Livia Ingabire (ingabireericalivia@gmail.com)
+
+June, 2024
 
 
 ## Live Website
