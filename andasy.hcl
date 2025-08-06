@@ -1,14 +1,16 @@
-# andasy.hcl app configuration file generated for ecommerce on Wednesday, 06-Aug-25 15:12:24 CAT
+# andasy.hcl app configuration file generated for myecommerce on Wednesday, 06-Aug-25 16:49:25 CAT
 #
 # See https://github.com/quarksgroup/andasy-cli for information about how to use this file.
 
-app_name = "ecommerce"
+app_name = "myecommerce"
 
 app {
 
-  env = {}
+  env = {
+  HOST = "::"
+  }
 
-  port = 5173
+  port = 80
 
   compute {
     cpu      = 1
@@ -17,7 +19,7 @@ app {
   }
 
   process {
-    name = "ecommerce"
+    name = "myecommerce"
   }
 
 }
