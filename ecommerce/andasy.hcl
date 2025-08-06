@@ -8,7 +8,7 @@ app {
 
   env = {}
 
-  port = 80
+  port = 5173
 
   compute {
     cpu      = 1
